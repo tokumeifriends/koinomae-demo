@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>こいのまえ｜疑似LINE体験</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background: #fff8fb;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background-color: #f88ca4;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 1.2rem;
+      position: relative;
+    }
+    .score-button {
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      background: white;
+      color: #f88ca4;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .chat-box {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .message {
+      margin-bottom: 12px;
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      line-height: 1.4;
+      display: inline-block;
+    }
+    .user {
+      background-color: #d6f5e9;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+    .ai {
+      background-color: #f0f0f0;
+      align-self: flex-start;
+      margin-right: auto;
+    }
+    .name {
+      font-size: 0.75rem;
+      color: #999;
+      margin-bottom: 2px;
+    }
+    .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .input-area {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 8px;
+      background: #fff;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      margin-left: 8px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 20px;
+      background-color: #f88ca4;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    AIとの疑似LINE体験
+    <a href="result.html" class="score-button">採点する</a>
+  </header>
+  <div class="chat-box" id="chatBox">
+    <div class="name">あかね</div>
+    <div class="message ai">
+      <img src="https://i.imgur.com/WtZtqQH.png" class="avatar" alt="avatar">最近何してるの〜？💬
+    </div>
+  </div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="メッセージを送る…" />
+    <button onclick="sendMessage()">送信</button>
+  </div>
+  <script>
+    const responses = [
+      "どういう意味？笑",
+    ];
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chatBox = document.getElementById("chatBox");
+      const text = input.value.trim();
+      if (text === "") return;
+
+      const userDiv = document.createElement("div");
+      userDiv.className = "message user";
+      userDiv.innerText = text;
+      chatBox.appendChild(userDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      input.value = "";
+
+      setTimeout(() => {
+        const nameTag = document.createElement("div");
+        nameTag.className = "name";
+        nameTag.innerText = "あかね";
+        chatBox.appendChild(nameTag);
+
+        const aiDiv = document.createElement("div");
+        aiDiv.className = "message ai";
+        aiDiv.innerHTML = '<img src="https://i.imgur.com/WtZtqQH.png" class="avatar" alt="avatar"> ' + generateAIResponse(text);
+        chatBox.appendChild(aiDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 1200 + Math.random() * 800);
+    }
+
+    function generateAIResponse(userText) {
+      const t = userText.toLowerCase();
+      if (t.includes("このカフェ")) {
+        return "え、そこ気になってた！（笑）いこ！🍰";
+      } else if (t.includes("緊張") || t.includes("話せない")) {
+        return "全然大丈夫だよ〜。私も緊張するし";
+      } else if (t.includes("どうしよ") || t.includes("うーん")) {
+        return "どうしようね";
+      } else if (t.includes("好き") || t.includes("気になる")) {
+        return "...え、私も！😳";
+      } else if (t.includes("暇") || t.includes("ひま")) {
+        return "ふーん（笑）一緒だね";
+      } else if (t.includes("どっか") || t.includes("行きたい")) {
+        return "いいよ！どこ行こうか…";
+      } else if (t.includes("何してるの") || t.includes("なにしてる")) {
+        return "私も最近暇なの テスト終わったし!";
+      } else if (t.includes("ごめん") || t.includes("やめよ")) {
+        return "ごめんね💦";
+      } else {
+        return responses[Math.floor(Math.random() * responses.length)];
+      }
+    }
+
+    // Enterキー送信対応
+    document.getElementById("userInput").addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>こいのまえ｜診断結果</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background: #fff8fb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #f88ca4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    .love-score-label {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .love-score-value {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #f88ca4;
+      margin-bottom: 32px;
+    }
+
+    .result-box {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 32px 24px;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .result-type {
+      font-size: 1.4rem;
+      color: #444;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 28px;
+    }
+
+    .result-box p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1.5em;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #f88ca4;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 24px;
+      text-decoration: none;
+      margin-top: 24px;
+      font-size: 1rem;
+      text-align: center;
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.85rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>診断結果</h1>
+  </header>
+  <main>
+    <div class="love-score-label">📊 あなたの恋愛偏差値は</div>
+    <div class="love-score-value">55</div>
+
+    <div class="result-box">
+      <div class="result-type">あなたは「影の共感ナビゲーター」タイプ</div>
+
+      <p>
+        あなたは、<strong>自分の感情と他人の感情の“間”に敏感な人</strong>です。  
+        言葉にしなくても空気から相手の状態を読み取り、自分を抑えてでもバランスを保とうとする傾向があります。
+      </p>
+      <p>
+        その反面、<strong>「自分の想いを伝えるタイミング」がわからず、慎重すぎるゆえに一歩を踏み出せない</strong>ことも。  
+        でも、それは臆病ではなく、“相手への敬意”の裏返しです。
+      </p>
+      <p>
+        恋愛においても、あなたの武器は<strong>観察力と共感力</strong>です。  
+        まずは小さな共通点から、「ちょっと聞いてみたいことがあるんだけど」と会話を切り出す勇気を持ってみてください。
+      </p>
+      <p>
+        あなたのペースでいい。<strong>大切なのは「気持ちを表に出す」ことを少しずつ習慣にすること</strong>。  
+        それだけで世界が変わっていきます。
+      </p>
+
+      <a href="form.html" class="button">もう一度診断する</a>
+    </div>
+  </main>
+  <footer>
+    © 2025 こいのまえ<br>
+    ※現在開発中のデモ版です
+  </footer>
+</body>
+</html>
